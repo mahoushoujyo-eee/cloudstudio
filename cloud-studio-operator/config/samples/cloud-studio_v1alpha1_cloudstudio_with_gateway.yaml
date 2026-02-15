@@ -1,0 +1,33 @@
+apiVersion: cloud-studio.example.com/v1alpha1
+kind: CloudStudio
+metadata:
+  name: cloudstudio-sample
+spec:
+  # User ID for the CloudStudio instance
+  userId: "user123"
+  # Instance ID for the CloudStudio instance
+  instanceId: "instance456"
+  # URL for accessing the CloudStudio instance (e.g., https://user123-instance456.example.com)
+  url: "https://user123-instance456.ide.openeee.cn"
+  # Gateway name for routing external traffic
+  gateway:
+    name: "istio-gateway"
+    namespace: "istio-system"
+  # Storage class name for the PVC
+  storageClassName: "standard"
+  # Storage size for the PVC
+  storageSize: "10Gi"
+  # Code server image
+  codeServerImage: "codercom/code-server:4.91.1"
+  # Heartbeat image
+  heartbeatImage: "busybox:1.36.1"
+  # Optional: CPU limit
+  cpuLimit: "1"
+  # Optional: Memory limit
+  memoryLimit: "2Gi"
+  # Optional: CPU request
+  cpuRequest: "500m"
+  # Optional: Memory request
+  memoryRequest: "1Gi"
+  # Status: "running" or "paused"
+  status: "running"

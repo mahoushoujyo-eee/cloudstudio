@@ -1,0 +1,26 @@
+### Create Course Record
+POST http://localhost:8080/course/record/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "courseId": 1,
+  "progress": 50
+}
+
+### Get Course Record by ID
+GET http://localhost:8080/course/record/1
+
+### Update Course Record
+PUT http://localhost:8080/course/record/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "courseId": 1,
+  "progress": 75
+}
+
+### Delete Course Record
+DELETE http://localhost:8080/course/record/1

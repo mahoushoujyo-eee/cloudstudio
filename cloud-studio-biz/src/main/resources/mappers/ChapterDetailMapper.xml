@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.ChapterDetailMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.ChapterDetail">
+        <id column="id" property="id" />
+        <result column="creator_id" property="creatorId" />
+        <result column="creation_time" property="creationTime" />
+        <result column="modifier_id" property="modifierId" />
+        <result column="modification_time" property="modificationTime" />
+        <result column="course_id" property="courseId" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.ChapterDetail" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO chapter_detail(creator_id, creation_time, modifier_id, modification_time, course_id, title, description)
+        VALUES(#{creatorId}, #{creationTime}, #{modifierId}, #{modificationTime}, #{courseId}, #{title}, #{description})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.ChapterDetail" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO chapter_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">creator_id,</if>
+            <if test="creationTime != null">creation_time,</if>
+            <if test="modifierId != null">modifier_id,</if>
+            <if test="modificationTime != null">modification_time,</if>
+            <if test="courseId != null">course_id,</if>
+            <if test="title != null">title,</if>
+            <if test="description != null">description,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="creationTime != null">#{creationTime},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+            <if test="modificationTime != null">#{modificationTime},</if>
+            <if test="courseId != null">#{courseId},</if>
+            <if test="title != null">#{title},</if>
+            <if test="description != null">#{description},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, course_id, title, description
+        FROM chapter_detail
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.ChapterDetail">
+        UPDATE chapter_detail
+        <set>
+            <if test="creatorId != null">creator_id = #{creatorId},</if>
+            <if test="creationTime != null">creation_time = #{creationTime},</if>
+            <if test="modifierId != null">modifier_id = #{modifierId},</if>
+            <if test="modificationTime != null">modification_time = #{modificationTime},</if>
+            <if test="courseId != null">course_id = #{courseId},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="cn.openeee.cloudstudiobiz.entities.ChapterDetail">
+        UPDATE chapter_detail
+        SET creator_id = #{creatorId},
+            creation_time = #{creationTime},
+            modifier_id = #{modifierId},
+            modification_time = #{modificationTime},
+            course_id = #{courseId},
+            title = #{title},
+            description = #{description}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        DELETE FROM chapter_detail WHERE id = #{id}
+    </delete>
+    
+    <!-- 根据课程ID获取章节列表 -->
+    <select id="selectByCourseId" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, course_id, title, description
+        FROM chapter_detail
+        WHERE course_id = #{courseId}
+        ORDER BY id
+    </select>
+    
+    <!-- 批量插入章节 -->
+    <insert id="batchInsert">
+        INSERT INTO chapter_detail(course_id, creator_id, creation_time, modifier_id, modification_time, title, description)
+        VALUES
+        <foreach collection="chapters" item="chapter" separator=",">
+            (#{chapter.courseId}, #{chapter.creatorId}, #{chapter.creationTime}, #{chapter.modifierId}, 
+             #{chapter.modificationTime}, #{chapter.title}, #{chapter.description})
+        </foreach>
+    </insert>
+    
+    <!-- 根据课程ID删除章节 -->
+    <delete id="deleteByCourseId">
+        DELETE FROM chapter_detail WHERE course_id = #{courseId}
+    </delete>
+</mapper>

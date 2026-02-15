@@ -1,0 +1,26 @@
+.tab-nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tab-nav button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+}
+
+.tab-nav button.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.template-page .template-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}

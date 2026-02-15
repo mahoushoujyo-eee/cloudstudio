@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- cloud-studio_v1alpha1_cloudstudio.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

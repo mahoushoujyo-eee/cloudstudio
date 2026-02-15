@@ -1,0 +1,61 @@
+### Create Application
+POST http://localhost:8080/application/create
+Content-Type: application/json
+
+{
+  "name": "Ubuntu",
+  "description": "A sample application for testing",
+  "tags": "linux,test,application",
+  "creatorId": 1
+}
+
+### Get Application by ID
+GET http://localhost:8080/application/1
+
+### Get Application List
+POST http://localhost:8080/application/list
+Content-Type: application/json
+
+{
+  "name": "Sample",
+  "tags": "test",
+  "pageIndex": 0,
+  "pageOffset": 10
+}
+
+### Get Application Templates
+GET http://localhost:8080/application/template
+
+### Update Application
+POST http://localhost:8080/application/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Updated Application",
+  "description": "An updated application for testing",
+  "tags": "updated,test,application"
+}
+
+### Delete Application
+DELETE http://localhost:8080/application/delete?applicationId=1
+
+### Set Application Cover
+POST http://localhost:8080/application/cover
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+### Fork Application
+POST http://localhost:8080/application/fork?applicationId=1
+
+### Stop Application
+POST http://localhost:8080/application/stop?applicationId=1
+
+### Restart Application
+POST http://localhost:8080/application/restart?applicationId=1
+
+### Change Application Visibility
+POST http://localhost:8080/application/change?applicationId=1&isVisible=true

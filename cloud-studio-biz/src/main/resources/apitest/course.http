@@ -1,0 +1,64 @@
+### Create Course
+POST http://localhost:8080/course/create
+Content-Type: application/json
+
+{
+  "creatorId": 1,
+  "title": "Go Programming Basics",
+  "description": "Learn the fundamentals of Go programming",
+  "tags": "go,programming,beginner",
+  "chapterCount": 15
+}
+
+### Get Course by ID
+GET http://localhost:8080/course/1
+
+### Get Course List
+GET http://localhost:51080/course/list?pageIndex=0&pageOffset=10&title=Java&tags=programming
+
+### Update Course
+POST http://localhost:8080/course/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Advanced Java Programming",
+  "description": "Learn advanced concepts of Java programming",
+  "tags": "java,programming,advanced",
+  "chapterCount": 15
+}
+
+### Delete Course
+DELETE http://localhost:8080/course/delete?courseId=4
+
+### Set Course Cover
+POST http://localhost:8080/course/cover
+Content-Type: application/json
+
+{
+  "id": 1,
+  "coverImageName": "java-cover.jpg"
+}
+
+### Add Course Comment
+POST http://localhost:8080/course/comment
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "courseId": 1,
+  "content": "Great course! Very helpful for beginners."
+}
+
+### Get Course Comments
+GET http://localhost:8080/course/comment
+Content-Type: application/json
+
+{
+  "courseId": 1,
+  "pageIndex": 0,
+  "pageOffset": 10
+}
+
+### Delete Course Comment
+DELETE http://localhost:8080/course/comment?commentId=4

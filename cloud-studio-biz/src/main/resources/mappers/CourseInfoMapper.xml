@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.CourseInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.CourseInfo">
+        <id column="id" property="id" />
+        <result column="creator_id" property="creatorId" />
+        <result column="creation_time" property="creationTime" />
+        <result column="modifier_id" property="modifierId" />
+        <result column="modification_time" property="modificationTime" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="tags" property="tags" />
+        <result column="chapter_count" property="chapterCount" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.CourseInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO course_info(creator_id, creation_time, modifier_id, modification_time, title, description, tags, chapter_count)
+        VALUES(#{creatorId}, #{creationTime}, #{modifierId}, #{modificationTime}, #{title}, #{description}, #{tags}, #{chapterCount})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.CourseInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO course_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">creator_id,</if>
+            <if test="creationTime != null">creation_time,</if>
+            <if test="modifierId != null">modifier_id,</if>
+            <if test="modificationTime != null">modification_time,</if>
+            <if test="title != null">title,</if>
+            <if test="description != null">description,</if>
+            <if test="tags != null">tags,</if>
+            <if test="chapterCount != null">chapter_count,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="creationTime != null">#{creationTime},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+            <if test="modificationTime != null">#{modificationTime},</if>
+            <if test="title != null">#{title},</if>
+            <if test="description != null">#{description},</if>
+            <if test="tags != null">#{tags},</if>
+            <if test="chapterCount != null">#{chapterCount},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, title, description, tags, chapter_count
+        FROM course_info
+        WHERE id = #{id}
+    </select>
+    <select id="selectByPagination" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, title, description, tags, chapter_count
+        FROM course_info
+        WHERE 1 = 1
+        <if test="title != null">AND title LIKE CONCAT('%', #{title}, '%')</if>
+        <if test="tags != null">AND tags LIKE CONCAT('%', #{tags}, '%')</if>
+        ORDER BY creation_time DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.CourseInfo">
+        UPDATE course_info
+        <set>
+            <if test="creatorId != null">creator_id = #{creatorId},</if>
+            <if test="creationTime != null">creation_time = #{creationTime},</if>
+            <if test="modifierId != null">modifier_id = #{modifierId},</if>
+            <if test="modificationTime != null">modification_time = #{modificationTime},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="tags != null">tags = #{tags},</if>
+            <if test="chapterCount != null">chapter_count = #{chapterCount},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        DELETE FROM course_info WHERE id = #{id}
+    </delete>
+</mapper>

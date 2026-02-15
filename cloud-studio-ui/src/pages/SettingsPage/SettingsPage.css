@@ -1,0 +1,97 @@
+.settings-page {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+}
+
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-menu button {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.settings-menu .active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.settings-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.settings-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.settings-form input,
+.settings-form textarea,
+.settings-form select {
+  margin-top: 6px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  width: min(400px, 100%);
+}
+
+.settings-form textarea {
+  min-height: 80px;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+.form-actions button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  background: var(--gradient-blue);
+  color: #fff;
+  cursor: pointer;
+}
+
+.settings-list > div {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 0;
+}
+
+.settings-list > div:last-child {
+  border-bottom: none;
+}
+
+.settings-list button {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+}
+
+.settings-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+@media (max-width: 900px) {
+  .settings-page {
+    grid-template-columns: 1fr;
+  }
+}

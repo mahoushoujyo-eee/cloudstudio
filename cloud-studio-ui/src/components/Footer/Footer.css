@@ -1,0 +1,13 @@
+.app-footer {
+  background: rgba(15, 23, 42, 0.04);
+  padding: 24px 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}

@@ -1,0 +1,28 @@
+### Create Application Activity Record
+POST http://localhost:8080/application/activity/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "applicationId": 1,
+  "startTime": "2023-01-01T10:00:00",
+  "endTime": "2023-01-01T12:00:00"
+}
+
+### Get Application Activity Record by ID
+GET http://localhost:8080/application/activity/1
+
+### Update Application Activity Record
+PUT http://localhost:8080/application/activity/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "applicationId": 1,
+  "startTime": "2023-01-01T10:00:00",
+  "endTime": "2023-01-01T13:00:00"
+}
+
+### Delete Application Activity Record
+DELETE http://localhost:8080/application/activity/1

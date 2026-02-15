@@ -1,0 +1,15 @@
+apiVersion: cloud-studio.example.com/v1alpha1
+kind: CloudStudio
+metadata:
+  name: cloudstudio-sample
+spec:
+  codeServerImage: codercom/code-server:latest
+  heartbeatImage: busybox:latest
+  replicas: 1
+  storageClassName: local-storage
+  storageSize: 10Gi
+  status: running
+  cpuLimit: "1"
+  memoryLimit: "1Gi"
+  cpuRequest: "0.5"
+  memoryRequest: "512Mi"

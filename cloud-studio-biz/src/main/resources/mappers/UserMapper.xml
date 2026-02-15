@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.UserInfo">
+        <id column="id" property="id" />
+        <result column="nickname" property="nickname" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_info(nickname, creator_id, modifier_id)
+        VALUES(#{nickname}, #{creatorId}, #{creatorId})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nickname != null">nickname,</if>
+            <if test="creatorId != null">creator_id,</if>
+            <if test="modifierId != null">modifier_id,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="nickname != null">#{nickname},</if>
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, nickname
+        FROM user_info
+        WHERE id = #{userId}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.UserInfo">
+        UPDATE user_info
+        <set>
+            <if test="nickname != null">nickname = #{nickname},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.ApplicationInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.ApplicationInfo">
+        <id column="id" property="id" />
+        <result column="creator_id" property="creatorId" />
+        <result column="creation_time" property="creationTime" />
+        <result column="modifier_id" property="modifierId" />
+        <result column="modification_time" property="modificationTime" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="tags" property="tags" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO application_info(creator_id, creation_time, modifier_id, modification_time, name, description, tags)
+        VALUES(#{creatorId}, #{creationTime}, #{modifierId}, #{modificationTime}, #{name}, #{description}, #{tags})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO application_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">creator_id,</if>
+            <if test="creationTime != null">creation_time,</if>
+            <if test="modifierId != null">modifier_id,</if>
+            <if test="modificationTime != null">modification_time,</if>
+            <if test="name != null">name,</if>
+            <if test="description != null">description,</if>
+            <if test="tags != null">tags,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="creationTime != null">#{creationTime},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+            <if test="modificationTime != null">#{modificationTime},</if>
+            <if test="name != null">#{name},</if>
+            <if test="description != null">#{description},</if>
+            <if test="tags != null">#{tags},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, name, description, tags
+        FROM application_info
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByPagination" resultType="cn.openeee.cloudstudiobiz.entities.ApplicationInfo">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, name, description, tags
+        FROM application_info
+        WHERE 1 = 1
+        <if test="name != null">AND name LIKE CONCAT('%', #{name}, '%')</if>
+        <if test="tags != null">AND tags LIKE CONCAT('%', #{tags}, '%')</if>
+        ORDER BY creation_time DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationInfo">
+        UPDATE application_info
+        <set>
+            <if test="creatorId != null">creator_id = #{creatorId},</if>
+            <if test="creationTime != null">creation_time = #{creationTime},</if>
+            <if test="modifierId != null">modifier_id = #{ModifierId},</if>
+            <if test="modificationTime != null">modification_time = #{modificationTime},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="tags != null">tags = #{tags},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        DELETE FROM application_info WHERE id = #{id}
+    </delete>
+</mapper>

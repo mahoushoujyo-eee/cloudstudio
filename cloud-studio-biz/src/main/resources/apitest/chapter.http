@@ -1,0 +1,54 @@
+### 创建单个章节
+POST http://localhost:8080/chapter/create
+Content-Type: application/json
+
+{
+  "courseId": 1,
+  "title": "第一章 Java基础",
+  "description": "介绍Java语言的基本概念和语法"
+}
+
+### 批量创建课程章节
+POST http://localhost:8080/chapter/batch-create
+Content-Type: application/json
+
+{
+  "courseId": 1,
+  "chapters": [
+    {
+      "title": "第二章 面向对象编程",
+      "description": "深入理解面向对象编程的概念"
+    },
+    {
+      "title": "第三章 集合框架",
+      "description": "学习Java集合框架的使用"
+    },
+    {
+      "title": "第四章 异常处理",
+      "description": "掌握Java异常处理机制"
+    }
+  ]
+}
+
+### 根据ID获取章节详情
+GET http://localhost:8080/chapter/1
+
+### 根据课程ID获取章节列表
+GET http://localhost:8080/chapter/list?courseId=1
+
+### 更新章节信息
+POST http://localhost:8080/chapter/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "courseId": 1,
+  "title": "第一章 Java入门",
+  "description": "介绍Java语言的基本概念、环境搭建和基础语法"
+}
+
+### 删除章节
+DELETE http://localhost:8080/chapter/1
+
+### 根据课程ID删除章节
+DELETE http://localhost:8080/chapter/by-course?courseId=1

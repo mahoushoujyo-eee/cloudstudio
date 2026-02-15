@@ -1,0 +1,161 @@
+.home-page .hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  margin: 12px 0;
+  font-family: var(--heading-font);
+}
+
+.hero-text p {
+  color: var(--color-muted);
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.hero-cta button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-cta .primary {
+  background: var(--gradient-blue);
+  color: #fff;
+}
+
+.hero-cta .ghost {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--color-body);
+}
+
+.hero-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.hero-text li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-visual {
+  display: grid;
+  gap: 16px;
+}
+
+.visual-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.visual-card.practice {
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.visual-card.files span {
+  display: block;
+  padding: 6px 0;
+  color: var(--color-muted);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-card svg {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.feature-card.purple {
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.feature-card.blue {
+  background: rgba(43, 90, 232, 0.12);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.university-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.app-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.cta-card {
+  background: var(--gradient-card);
+  border-radius: 30px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cta-card button {
+  border: none;
+  background: var(--gradient-blue);
+  color: #fff;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .app-card {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-card {
+    flex-direction: column;
+  }
+}

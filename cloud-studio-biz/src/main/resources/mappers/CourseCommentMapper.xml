@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.CourseCommentMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.CourseComment">
+        <id column="id" property="id" />
+        <result column="creator_id" property="creatorId" />
+        <result column="creation_time" property="creationTime" />
+        <result column="modifier_id" property="modifierId" />
+        <result column="modification_time" property="modificationTime" />
+        <result column="user_id" property="userId" />
+        <result column="course_id" property="courseId" />
+        <result column="content" property="content" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.CourseComment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO course_comment(creator_id, creation_time, modifier_id, modification_time, user_id, course_id, content)
+        VALUES(#{creatorId}, #{creationTime}, #{modifierId}, #{modificationTime}, #{userId}, #{courseId}, #{content})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.CourseComment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO course_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">creator_id,</if>
+            <if test="creationTime != null">creation_time,</if>
+            <if test="modifierId != null">modifier_id,</if>
+            <if test="modificationTime != null">modification_time,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="courseId != null">course_id,</if>
+            <if test="content != null">content,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="creationTime != null">#{creationTime},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+            <if test="modificationTime != null">#{modificationTime},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="courseId != null">#{courseId},</if>
+            <if test="content != null">#{content},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, user_id, course_id, content
+        FROM course_comment
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.CourseComment">
+        UPDATE course_comment
+        <set>
+            <if test="creatorId != null">creator_id = #{creatorId},</if>
+            <if test="creationTime != null">creation_time = #{creationTime},</if>
+            <if test="modifierId != null">modifier_id = #{modifierId},</if>
+            <if test="modificationTime != null">modification_time = #{modificationTime},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="courseId != null">course_id = #{courseId},</if>
+            <if test="content != null">content = #{content},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        DELETE FROM course_comment WHERE id = #{id}
+    </delete>
+</mapper>

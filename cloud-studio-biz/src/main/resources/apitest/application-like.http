@@ -1,0 +1,24 @@
+### Create Application Like
+POST http://localhost:8080/application/like/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "applicationId": 1
+}
+
+### Get Application Like by ID
+GET http://localhost:8080/application/like/1
+
+### Update Application Like
+PUT http://localhost:8080/application/like/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "applicationId": 1
+}
+
+### Delete Application Like
+DELETE http://localhost:8080/application/like/1

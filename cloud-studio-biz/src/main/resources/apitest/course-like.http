@@ -1,0 +1,24 @@
+### Create Course Like
+POST http://localhost:8080/course/like/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "courseId": 1
+}
+
+### Get Course Like by ID
+GET http://localhost:8080/course/like/1
+
+### Update Course Like
+PUT http://localhost:8080/course/like/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "courseId": 1
+}
+
+### Delete Course Like
+DELETE http://localhost:8080/course/like/1

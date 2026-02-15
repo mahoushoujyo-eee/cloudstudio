@@ -1,0 +1,22 @@
+package router
+
+import (
+	"travel/biz/handler"
+	// "travel/biz/middleware"
+
+	"github.com/cloudwego/hertz/pkg/route"
+)
+
+func RegisterChat(r *route.RouterGroup) {
+	// chatRouter := r.Group("/user", middleware.JwtMiddleware.MiddlewareFunc())
+	chatRouter := r.Group("/user")
+	{
+		chatRouter.GET("/conversations", )
+		chatRouter.GET("/conversations/:id/messages", )
+		chatRouter.POST("/conversation", )
+		chatRouter.POST("/files", handler.GetUploadUrlHandler)
+		chatRouter.POST("/stream", handler.ChatHandler)
+		chatRouter.POST("/course/outline", handler.GenerateCourseOutlineHandler)
+		chatRouter.POST("/course/content", handler.GenerateCourseContentHandler)
+	}
+}

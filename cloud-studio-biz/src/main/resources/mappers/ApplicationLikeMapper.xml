@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.openeee.cloudstudiobiz.dao.ApplicationLikeMapper">
+    <resultMap id="BaseResultMap" type="cn.openeee.cloudstudiobiz.entities.ApplicationLike">
+        <id column="id" property="id" />
+        <result column="creator_id" property="creatorId" />
+        <result column="creation_time" property="creationTime" />
+        <result column="modifier_id" property="modifierId" />
+        <result column="modification_time" property="modificationTime" />
+        <result column="user_id" property="userId" />
+        <result column="application_id" property="applicationId" />
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationLike" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO application_like(creator_id, creation_time, modifier_id, modification_time, user_id, application_id)
+        VALUES(#{creatorId}, #{creationTime}, #{modifierId}, #{modificationTime}, #{userId}, #{applicationId})
+    </insert>
+
+    <insert id="insertSelective" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationLike" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO application_like
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">creator_id,</if>
+            <if test="creationTime != null">creation_time,</if>
+            <if test="modifierId != null">modifier_id,</if>
+            <if test="modificationTime != null">modification_time,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="applicationId != null">application_id,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="creatorId != null">#{creatorId},</if>
+            <if test="creationTime != null">#{creationTime},</if>
+            <if test="modifierId != null">#{modifierId},</if>
+            <if test="modificationTime != null">#{modificationTime},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="applicationId != null">#{applicationId},</if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        SELECT id, creator_id, creation_time, modifier_id, modification_time, user_id, application_id
+        FROM application_like
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.openeee.cloudstudiobiz.entities.ApplicationLike">
+        UPDATE application_like
+        <set>
+            <if test="creatorId != null">creator_id = #{creatorId},</if>
+            <if test="creationTime != null">creation_time = #{creationTime},</if>
+            <if test="modifierId != null">modifier_id = #{modifierId},</if>
+            <if test="modificationTime != null">modification_time = #{modificationTime},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="applicationId != null">application_id = #{applicationId},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        DELETE FROM application_like WHERE id = #{id}
+    </delete>
+</mapper>

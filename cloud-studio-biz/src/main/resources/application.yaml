@@ -1,0 +1,24 @@
+server:
+    port: 51080
+
+spring:
+    application:
+        name: cloud-studio-biz
+    profiles:
+        active: local
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+    cache:
+      type: redis
+      redis:
+        time-to-live: 24h
+
+mybatis:
+    mapper-locations:
+        - classpath:mappers/*.xml
+
+logging:
+    pattern:
+        console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%thread]){faint} %clr(%-40.40logger{39}){cyan} %L %clr(:){faint} %m%n"
+    level:
+        root: INFO

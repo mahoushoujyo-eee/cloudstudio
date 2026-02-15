@@ -1,0 +1,36 @@
+### Create Course Comment
+POST http://localhost:8080/course/comment/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "courseId": 1,
+  "content": "This is a very informative course!"
+}
+
+### Get Course Comment by ID
+GET http://localhost:8080/course/comment/1
+
+### Get Course Comments List
+GET http://localhost:8080/course/comment/list
+Content-Type: application/json
+
+{
+  "courseId": 1,
+  "pageIndex": 0,
+  "pageOffset": 10
+}
+
+### Update Course Comment
+PUT http://localhost:8080/course/comment/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "courseId": 1,
+  "content": "This is an extremely informative course!"
+}
+
+### Delete Course Comment
+DELETE http://localhost:8080/course/comment/1

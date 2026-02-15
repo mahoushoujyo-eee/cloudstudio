@@ -1,0 +1,30 @@
+### Create Time Record
+POST http://localhost:8080/time/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "applicationId": 1,
+  "startTime": "2023-01-01T10:00:00",
+  "endTime": "2023-01-01T12:00:00",
+  "timeQuota": 120
+}
+
+### Get Time Record by ID
+GET http://localhost:8080/time/1
+
+### Update Time Record
+PUT http://localhost:8080/time/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "applicationId": 1,
+  "startTime": "2023-01-01T10:00:00",
+  "endTime": "2023-01-01T13:00:00",
+  "timeQuota": 180
+}
+
+### Delete Time Record
+DELETE http://localhost:8080/time/1

@@ -1,0 +1,35 @@
+### Get User Info
+GET http://localhost:8080/user/info
+
+### Get User Info by ID
+GET http://localhost:8080/user/1
+
+### Create User
+POST http://localhost:8080/user/create
+Content-Type: application/json
+
+{
+  "nickname": "John Doe",
+  "creatorId": 1,
+  "modifierId": 1
+}
+
+### Update User Info
+POST http://localhost:8080/user/info
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nickname": "John Doe Updated"
+}
+
+### Get User Time Count
+GET http://localhost:8080/user/count
+
+### Change User Avatar
+POST http://localhost:8080/user/avatar
+Content-Type: application/json
+
+{
+  "id": 1
+}

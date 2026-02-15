@@ -1,0 +1,27 @@
+:root {
+  --color-primary: #2b5ae8;
+  --color-primary-dark: #1e3bb8;
+  --color-secondary: #8b5cf6;
+  --color-accent: #22d3ee;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-surface: #ffffff;
+  --color-background: #f5f5ff;
+  --color-muted: #6b7280;
+  --color-muted-light: #9ca3af;
+  --color-border: #e3e6f0;
+  --color-border-strong: #c7ccf3;
+  --color-heading: #111827;
+  --color-body: #1f2937;
+  --gradient-lilac: linear-gradient(135deg, #f5f5ff 0%, #e4e6ff 50%, #f2f6ff 100%);
+  --gradient-blue: linear-gradient(135deg, #2b5ae8 0%, #5a7df2 50%, #7da0ff 100%);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #b074ff 50%, #d8b4fe 100%);
+  --gradient-card: linear-gradient(145deg, rgba(43, 90, 232, 0.08), rgba(139, 92, 246, 0.12));
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --shadow-soft: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --body-font: 'Inter', 'HarmonyOS Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --heading-font: 'Poppins', 'Inter', 'HarmonyOS Sans', 'Microsoft YaHei', sans-serif;
+}

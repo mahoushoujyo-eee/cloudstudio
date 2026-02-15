@@ -1,0 +1,13 @@
+.coming-soon {
+  text-align: center;
+  padding: 120px 0;
+}
+
+.coming-soon h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.coming-soon p {
+  color: var(--color-muted);
+}

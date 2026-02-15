@@ -1,0 +1,36 @@
+### Create Application Comment
+POST http://localhost:8080/application/comment/create
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "applicationId": 1,
+  "content": "This is a great application!"
+}
+
+### Get Application Comment by ID
+GET http://localhost:8080/application/comment/1
+
+### Get Application Comments List
+GET http://localhost:8080/application/comment/list
+Content-Type: application/json
+
+{
+  "applicationId": 1,
+  "pageIndex": 0,
+  "pageOffset": 10
+}
+
+### Update Application Comment
+PUT http://localhost:8080/application/comment/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 1,
+  "applicationId": 1,
+  "content": "This is an excellent application!"
+}
+
+### Delete Application Comment
+DELETE http://localhost:8080/application/comment/1

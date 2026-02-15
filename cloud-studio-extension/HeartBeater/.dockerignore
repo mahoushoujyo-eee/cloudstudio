@@ -1,0 +1,19 @@
+# 忽略已编译的可执行文件
+heartbeater.exe
+heartbeater
+
+# 忽略 IDE 文件
+.idea/
+.vscode/
+
+# 忽略 Git 文件
+.git/
+.gitignore
+
+# 忽略文档
+README.md
+*.md
+
+# 忽略其他不需要的文件
+.DS_Store
+Thumbs.db

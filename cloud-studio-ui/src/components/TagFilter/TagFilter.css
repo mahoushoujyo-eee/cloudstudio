@@ -1,0 +1,28 @@
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 0;
+  overflow-x: auto;
+}
+
+.tag-chip {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--color-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-chip.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.tag-chip:not(.active):hover {
+  background: rgba(43, 90, 232, 0.12);
+  color: var(--color-primary);
+}

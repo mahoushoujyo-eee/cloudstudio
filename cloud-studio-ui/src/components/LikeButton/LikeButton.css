@@ -1,0 +1,47 @@
+.like-button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  font-weight: 600;
+}
+
+.like-button .icon svg {
+  transition: transform 0.2s ease;
+}
+
+.like-button.liked {
+  background: rgba(244, 63, 94, 0.12);
+  color: #ef4444;
+}
+
+.like-button.liked .icon svg {
+  animation: pulseHeart 0.3s ease;
+}
+
+.like-button.sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.like-button.md {
+  font-size: 0.95rem;
+}
+
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,70 @@
+package handler
+
+import (
+	"context"
+	"encoding/json"
+	"travel/biz/param"
+	"travel/biz/service"
+	"travel/biz/util"
+
+	"github.com/aliyun/alibabacloud-oss-go-sdk-v2/oss"
+	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"github.com/hertz-contrib/sse"
+)
+
+// GetUploadUrlHandler 使用通用泛型处理器
+var GetUploadUrlHandler = GenericHandler(
+	func(ctx context.Context, c *app.RequestContext, request *param.UploadFileRequest) (*oss.PresignResult, error) {
+		return service.NewChatService(ctx, c).GetUploadUrl(request)
+	},
+)
+
+// GenerateCourseOutlineHandler 生成课程大纲
+var GenerateCourseOutlineHandler = GenericHandler(
+	func(ctx context.Context, c *app.RequestContext, request *param.CourseOutlineRequest) (*param.CourseOutline, error) {
+		return service.NewChatService(ctx, c).GenerateCourseOutline(request)
+	},
+)
+
+// GenerateCourseContentHandler 根据大纲生成完整课程内容
+var GenerateCourseContentHandler = GenericHandler(
+	func(ctx context.Context, c *app.RequestContext, request *param.GenerateCourseRequest) (*param.CourseOutline, error) {
+		return service.NewChatService(ctx, c).GenerateCourseContent(request)
+	},
+)
+
+func ChatHandler(ctx context.Context, c *app.RequestContext) {
+	request := new(param.ChatRequest)
+	if err := c.BindAndValidate(request); err != nil {
+		c.JSON(consts.StatusOK, param.ResponseError(consts.StatusInternalServerError, err.Error()))
+		return
+	}
+	responseChan := make(chan *param.SSEChatResponse)
+	sseSender := util.NewSSESender(sse.NewStream(c))
+
+	go func() {
+		defer close(responseChan)
+		if err := service.NewChatService(ctx, c).Chat(request, responseChan); err != nil {
+			c.JSON(consts.StatusOK, param.ResponseError(consts.StatusInternalServerError, err.Error()))
+			return
+		}
+	}()
+	for response := range responseChan {
+		// 创建包含content和conversationId的JSON数据
+		responseData := map[string]string{
+			"content":         response.Content,
+			"conversationId":  response.ConversationId,
+		}
+		jsonData, err := json.Marshal(responseData)
+		if err != nil {
+			// 如果JSON序列化失败，回退到原来的方式
+			jsonData = []byte(response.Content)
+		}
+		
+		sseSender.Send(ctx, &sse.Event{
+			Event: response.Type,
+			Data:  jsonData,
+		})
+	}
+}

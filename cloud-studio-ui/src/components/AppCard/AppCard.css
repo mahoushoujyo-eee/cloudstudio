@@ -1,0 +1,92 @@
+.app-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 20px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  align-items: stretch;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 42px rgba(43, 90, 232, 0.12);
+}
+
+.app-cover {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.app-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.app-tags span {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(43, 90, 232, 0.08);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.app-body h4 {
+  margin: 8px 0;
+  font-size: 1.2rem;
+}
+
+.app-body p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.app-author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pill-btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: var(--gradient-blue);
+  color: #fff;
+  font-weight: 600;
+}
+
+.app-stats {
+  display: flex;
+  gap: 16px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.app-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .app-card {
+    grid-template-columns: 1fr;
+  }
+}
